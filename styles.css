@@ -1,0 +1,450 @@
+/* -------------------------------------------
+   ICE BREAKER APP - INTRO
+----------------------------------------------*/
+#logo-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e5e5f7;
+  background-image: radial-gradient(#111343 0.5px, transparent 0.5px),
+                    radial-gradient(#111343 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOut 2s ease-in-out forwards;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-wrapper img {
+  width: 150px; /* same size as before */
+  height: auto;
+  opacity: 0;
+  animation: logoAppear 2s ease-in-out forwards;
+}
+
+body.dark .logofooter {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes logoAppear {
+  0% { opacity: 0; transform: scale(0.8); }
+  20% { opacity: 1; transform: scale(1.05); }
+  80% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+
+/* -------------------------------------------
+   ICE BREAKER APP - Updated Color Scheme
+----------------------------------------------*/
+
+/* ---------- CSS Variables ---------- */
+/* Light mode (Day) variables */
+:root {
+  --bg-day: #ffffff;
+  --text-day: #333333;
+  --title-day: #0077cc;
+  --button-primary-day: #64b5f6;
+  --button-theme-day: #FF9800;
+  --card-front-day: linear-gradient(135deg, #1a56aa, #b3dbd3);
+  --card-back-day: linear-gradient(135deg, #f275ce, #a6c1ee);
+}
+
+/* Dark mode variables */
+body.dark {
+  --bg-dark: #212121;
+  --text-dark: #e0e0e0;
+  --title-dark: #f0f0f3;
+  --button-primary-dark: linear-gradient(135deg, #355c7d, #6c5b7b);
+  --button-theme-dark: #ffb300;
+  --card-front-dark: linear-gradient(135deg, #355c7d, #6c5b7b);
+  --card-back-dark: linear-gradient(135deg, #2c3e50, #6e5a9c);
+
+  background-color: #dadada;
+  opacity: 1;
+  background-image: radial-gradient(#eeeeff 0.5px, transparent 0.5px),
+    radial-gradient(#eeeeff 0.5px, #384959 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  color: var(--text-dark);
+}
+
+/* ---------- Global Styles ---------- */
+body {
+  background-color: #565662;
+  opacity: 1;
+  background-image: radial-gradient(#111343 0.5px, transparent 0.5px),
+    radial-gradient(#111343 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  color: var(--text-day);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ---------- Title and Logo ---------- */
+.title-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px 0;
+  text-align: center;
+  animation: fadeSlideIn 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.title-logo-container .logo {
+  height: 60px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+body.dark .logo {
+  filter: brightness(0.95);
+}
+
+.title-logo-container h1 {
+  line-height: 1.1;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--title-day);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .title-logo-container h1 {
+  color: var(--title-dark);
+  text-shadow: 2px 2px 4px rgba(244, 239, 239, 0.5);
+}
+
+.icebreaker-subtitle {
+  font-size: 0.6em;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ---------- App Title ---------- */
+.app-title {
+  text-align: center;
+}
+
+.app-title h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--title-day);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .app-title h1 {
+  color: var(--title-dark);
+  text-shadow: 2px 2px 4px rgba(244, 239, 239, 0.5);
+}
+
+/* ---------- Top Right Buttons ---------- */
+.top-right-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 14px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.random-toggle,
+.reset-loopback,
+.settings-toggle,
+.sound-toggle,
+.speech-toggle,
+.language-toggle {
+  background: var(--button-primary-day);
+}
+
+body.dark .reset-loopback,
+body.dark .settings-toggle,
+body.dark .sound-toggle,
+body.dark .speech-toggle,
+body.dark .language-toggle {
+  background: var(--button-primary-dark);
+}
+
+.theme-toggle {
+  background: var(--button-theme-day);
+}
+
+body.dark .theme-toggle {
+  background: var(--button-theme-dark);
+}
+
+/* ---------- Card Container ---------- */
+.card-container {
+  perspective: 1000px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  border-radius: 24px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+}
+
+.front {
+  background: var(--card-front-day);
+}
+
+.back {
+  background: var(--card-back-day);
+  transform: rotateY(180deg);
+}
+
+body.dark .front {
+  background: var(--card-front-dark);
+}
+
+body.dark .back {
+  background: var(--card-back-dark);
+}
+
+/* ---------- Typography ---------- */
+h2 {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 300;
+  z-index: 1000;
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+body.dark .footer {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ---------- Category Grid ---------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.category-grid.single-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 18px 14px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.category-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Settings Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: #525664;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2,
+.modal-content h3 {
+  text-align: center;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.settings-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+.settings-categories label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.settings-categories input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: scale(1.2);
+}
+
+.modal-buttons {
+  text-align: right;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #69b7eb;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #58a3d7;
+}
+
+/* ---------- Toast Message ---------- */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .category-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
