@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reset loop‑back
   resetLoopback?.addEventListener('click', () => {
     Object.keys(questionHistory).forEach(cat => questionHistory[cat] = []);
-    showToast('✅ Questions refreshed');
+    // showToast('✅ Questions refreshed');
   });
 
   // —— SOUND —— 
