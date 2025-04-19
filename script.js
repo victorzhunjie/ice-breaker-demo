@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function createBtn(cat, container) {
     const b = document.createElement('button');
     b.className = 'category-btn';
-    b.textContent = getCategoryLabel(cat);
+    b.textContent = getCategoryLabel(cat, false);
     b.onclick = () => showQuestion(cat);
     container.append(b);
   }
@@ -312,25 +312,39 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'Select a Category';
     }
   }
-  function getCategoryLabel(cat){
+  function getCategoryLabel(cat, showCount=true) {
     const cn = {
       'Get to Know You': '认识你',
-      Hobbies:'爱好',
-      'Fun Facts':'趣事',
-      Career:'职业',
-      Travel:'旅行',
-      Reflection : "思考人生",
-      Technology:'科技',
-      'Dating History':'感情经历',
-      'Dating':'约会',
-      'First Time':'第一次',
+      Hobbies: '爱好',
+      'Fun Facts': '趣事',
+      Career: '职业',
+      Travel: '旅行',
+      Reflection: "思考人生",
+      Technology: '科技',
+      'Dating History': '感情经历',
+      'Dating': '约会',
+      'First Time': '第一次',
       "What If": "假如",
-      Random:'随机'
+      Random: '随机'
     };
-    if(currentLanguage==='zh') return cn[cat]||cat;
-    if(currentLanguage==='yue') return cn[cat]||cat;
-    if(currentLanguage.startsWith('en+zh')) return `${cat} / ${cn[cat]||cat}`;
-    return cat;
+
+    let count = ''
+    if (cat !== 'Random' && showCount) { 
+      const total = categories[cat]?.en?.length;
+      const remaining = questionHistory[cat]?.length ?? total;  // if never initialized, assume full
+      const used = total - remaining;
+      count = `(${used}/${total})`;
+    }
+
+    switch (currentLanguage) {
+      case 'zh':
+      case 'yue':
+        return `${cn[cat] || cat} + ${count}`;
+      case 'en+zh':
+      case 'en+zh+roman':
+        return `${cat} / ${cn[cat] || cat} ${count}`;
+      default:
+        return `${cat} ${count}`;    }
   }
 
   // —— SHOW QUESTION ——
@@ -348,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.classList.add('flipped');
     playFlipSound();
     if (speechEnabled) speakText(speech);
+    renderCategories();
   }
 
   function getRandomQuestion(cat) {

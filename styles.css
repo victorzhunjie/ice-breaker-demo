@@ -1,10 +1,6 @@
 /* -------------------------------------------
    ICE BREAKER APP - INTRO
 ----------------------------------------------*/
-.settings-container * {
-  outline: 1px solid red; /* helps visually debug stacking */
-}
-
 #logo-intro {
   position: fixed;
   top: 0;
@@ -372,10 +368,14 @@ body.dark .footer {
   margin-bottom: 0.5rem;
 }
 
+.settings-container * {
+  outline: 1px solid red; /* helps visually debug stacking */
+}
+
 .settings-categories {
   color: #e5e5f7;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   /* gap: px; */
   max-height: 300px;
   overflow-y: auto;
@@ -384,8 +384,8 @@ body.dark .footer {
 
 .settings-categories label {
   display: block;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+  margin-bottom: 2px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
