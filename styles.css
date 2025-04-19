@@ -373,12 +373,13 @@ body.dark .footer {
 }
 
 .settings-categories {
+  color: #e5e5f7;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  /* gap: px; */
   max-height: 300px;
   overflow-y: auto;
-  margin: 20px 0;
+  margin: 0px 0;
 }
 
 .settings-categories label {
