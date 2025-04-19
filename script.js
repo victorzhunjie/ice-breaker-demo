@@ -93,10 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
   //   });
   // }
 
-  document.querySelector('.settings-toggle').addEventListener('click', () => {
-    document.getElementById('settings-modal').style.display = 'block';
-    populateSelect();
-  });
+  // document.querySelector('.settings-toggle').addEventListener('click', () => {
+  //   document.getElementById('settings-modal').style.display = 'block';
+  //   populateSelect();
+  // });
 
   // When the user picks a new set:
   // categoryListSelect.addEventListener('change', e => {
@@ -223,22 +223,32 @@ document.addEventListener('DOMContentLoaded', () => {
   languageToggle.textContent = getLanguageLabel(currentLanguage);
 
   // —— SETTINGS OVERLAY ——
+  // function addCategoryCheckbox(cat) {
+  //   const label = document.createElement('label');
+  //   console.log('--', currentLanguage)
+  //   label.innerHTML = `<input type="checkbox" value="${cat}" ${enabledCategories.includes(cat) ? 'checked' : ''}/> ${getCategoryLabel(cat)}`;
+  //   settingsCats.append(label);
+  // }  
+
   function addCategoryCheckbox(cat) {
     const label = document.createElement('label');
-    console.log('--', currentLanguage)
-    label.innerHTML = `<input type="checkbox" value="${cat}" ${enabledCategories.includes(cat) ? 'checked' : ''}/> ${getCategoryLabel(cat)}`;
-    settingsCats.append(label);
-  }  
+    label.style.display = 'block';              // ensure block layout
+    label.style.cursor  = 'pointer';            // show it’s clickable
+  
+    const input = document.createElement('input');
+    input.type    = 'checkbox';
+    input.value   = cat;
+    input.checked = enabledCategories.includes(cat);
+  
+    label.appendChild(input);
+    label.appendChild(document.createTextNode(` ${getCategoryLabel(cat)}`));
+    settingsCats.appendChild(label);
+  }
+
+
   function openSettings() {
     settingsCats.innerHTML = '';
     Object.keys(categories).forEach(addCategoryCheckbox);
-
-    // Random-toggle
-    // const randLabel = document.createElement('label');
-    // randLabel.style.marginTop = '0.5rem';
-    // randLabel.innerHTML = `<input id="random-checkbox" type="checkbox" ${useRandomCategory?'checked':''}/> Random`;
-    // settingsCats.append(randLabel);
-
     settingsModal.style.display = 'flex';
   }
   function closeSettings() {

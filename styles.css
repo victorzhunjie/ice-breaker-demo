@@ -1,6 +1,10 @@
 /* -------------------------------------------
    ICE BREAKER APP - INTRO
 ----------------------------------------------*/
+.settings-container * {
+  outline: 1px solid red; /* helps visually debug stacking */
+}
+
 #logo-intro {
   position: fixed;
   top: 0;
@@ -16,7 +20,7 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  animation: fadeInOut 2s ease-in-out forwards;
+  animation: fadeInOut 1s ease-in-out forwards;
 }
 
 .logo-wrapper {
@@ -427,6 +431,7 @@ body.dark .footer {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   z-index: 9999;
+  pointer-events: none; /* allows clicks to pass through */
 }
 
 .toast.show {
