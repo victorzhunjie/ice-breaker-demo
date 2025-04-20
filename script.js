@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (currentLanguage) {
       case 'zh':
       case 'yue':
-        return `${cn[cat] || cat} + ${count}`;
+        return `${cn[cat] || cat} ${count}`;
       case 'en+zh':
       case 'en+zh+roman':
         return `${cat} / ${cn[cat] || cat} ${count}`;
